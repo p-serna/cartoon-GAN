@@ -20,6 +20,8 @@ def show_n_random(img_names=None,n=3,max_x=5,**kwargs):
     img = imageio.imread(f"{v.TRAINFOLDER}/cs{fname}.png")
     ax.imshow(img)
     ax.set_axis_off()
+
+  plt.tight_layout()
   return fig,axs
 
 def plot_imgs(imgs,n=None,max_x=v.PREVIEW_COLS,**kwargs):
@@ -32,6 +34,8 @@ def plot_imgs(imgs,n=None,max_x=v.PREVIEW_COLS,**kwargs):
   for ax,img in zip(axs,imgs):
     ax.imshow(img)
     ax.set_axis_off()
+
+  plt.tight_layout()
   return fig,axs
 
 
