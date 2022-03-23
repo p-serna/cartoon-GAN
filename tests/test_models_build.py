@@ -1,3 +1,6 @@
+import os 
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+
 import tensorflow as tf
 import matplotlib.pyplot as plt
 import cartoonGAN.vars as v
