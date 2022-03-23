@@ -28,29 +28,29 @@ def read_files(img_names, nmax=1000):
       yield np.stack(X),np.stack(Y)
       X,Y = [],[]
 
-def get_pars():
-  if v.RELOADMEANNSTD:
-    gen = read_files(img_names)
-    m,sd = [],[]
-    for i, (X,Y) in enumerate(gen):
-      m.append(X.mean())
-      sd.append(X.std())
-    m = np.array(m)
-    sd = np.array(sd)
-    np.savez_compressed(f"data/pars0.npz",mean=m,std=sd)
-  else:
-    d = np.load("data/pars0.npz")
-    m = d["mean"]
-    sd = d["std"]
-  return np.array(m),np.array(sd)
+# def get_pars():
+#   if v.RELOADMEANNSTD:
+#     gen = read_files(img_names)
+#     m,sd = [],[]
+#     for i, (X,Y) in enumerate(gen):
+#       m.append(X.mean(0).mean(0).mean(0))
+#       sd.append(X.std(0).mean(0))
+#     m = np.array(m)
+#     sd = np.array(sd)
+#     np.savez_compressed(f"data/pars0.npz",mean=m,std=sd)
+#   else:
+#     d = np.load("data/pars0.npz")
+#     m = d["mean"]
+#     sd = d["std"]
+#   return np.array(m),np.array(sd)
 
 
 
 def preprocess_data(m=None,sd=None):
-  if m is None:
-    m,sd = get_pars()
-    m = m.mean()
-    sd = sd.mean()
+  # if m is None:
+  #   m,sd = get_pars()
+  #   m = m.mean()
+  #   sd = sd.mean()
 
   gen = read_files(img_names)
   for i, (X,Y) in enumerate(gen):
@@ -58,7 +58,7 @@ def preprocess_data(m=None,sd=None):
     # the exact output you're looking for:
     sys.stdout.write("[%-10s] %d%%" % ('='*i, 10*i))
     sys.stdout.flush()
-    X = (X-m)/sd
+    X = X/255.0
 
     np.savez_compressed(f"{v.DATAST}/data_{i:03d}.npz",X=X,Y=Y)
 
