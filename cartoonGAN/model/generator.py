@@ -31,7 +31,7 @@ def build_generator(seed_size, channels = 4):
     model.add(L.BatchNormalization())
     model.add(L.LeakyReLU())
     
-    model.add(L.Conv2DTranspose(channels, (5, 5), strides=(1, 1), padding='same', use_bias=False, activation='tanh'))
+    model.add(L.Conv2DTranspose(channels, (5, 5), strides=(1, 1), padding='same', use_bias=False, activation='sigmoid'))
     assert model.output_shape == (None, 96, 96, channels)
     
     return model

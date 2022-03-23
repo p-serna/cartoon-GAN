@@ -46,13 +46,13 @@ def read_files(img_names, nmax=1000):
 
 
 
-def preprocess_data(m=None,sd=None):
+def preprocess_data(nmax=1000,m=None,sd=None):
   # if m is None:
   #   m,sd = get_pars()
   #   m = m.mean()
   #   sd = sd.mean()
 
-  gen = read_files(img_names)
+  gen = read_files(img_names,nmax)
   for i, (X,Y) in enumerate(gen):
     sys.stdout.write('\r')
     # the exact output you're looking for:
@@ -60,8 +60,9 @@ def preprocess_data(m=None,sd=None):
     sys.stdout.flush()
     X = X/255.0
 
-    np.savez_compressed(f"{v.DATAST}/data_{i:03d}.npz",X=X,Y=Y)
+    np.save(f"{v.DATAST}/data_{i:03d}.npy",X)
+    np.save(f"{v.DATAST}/labels_{i:03d}.npy",X)
 
 
 if __name__=="__main__":
-  pass
+  preprocess_data()
