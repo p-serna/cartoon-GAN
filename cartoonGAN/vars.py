@@ -18,5 +18,7 @@ BATCH_SIZE = 128
 GENR_LR = 1.5e-4
 DISC_LR = 1.5e-4
 
+MODELCHKPNT = "training/checkpoints"
+
 PREVIEW_ROWS=2 
 PREVIEW_COLS=5

@@ -22,6 +22,9 @@ def datasetgenerator(batch_size=v.BATCH_SIZE):
       X = X[batch_size:,:]
 
 datagen = datasetgenerator()
-train(datasetgenerator,100)
+train(datasetgenerator,200)
+
+model.generator.save(os.path.join(v.MODELCHKPNT, "face_generator.h5"))
+model.discriminator.save(os.path.join(v.MODELCHKPNT, "face_discriminator.h5"))
 
 #generator.save(os.path.join(DATA_PATH, "face_generator.h5"))
