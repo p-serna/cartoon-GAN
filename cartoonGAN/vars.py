@@ -13,3 +13,4 @@ get_par = lambda fname : fname.split(".")[0][2:]
 AVATARSIZE = (96,96)
 INPUT_SHAPE = (*AVATARSIZE,4)
 RELOADMEANNSTD = False
+SEEDSIZE= 10
