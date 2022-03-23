@@ -24,3 +24,5 @@ def datasetgenerator(batch_size=v.BATCH_SIZE):
 
 datagen = datasetgenerator()
 train(datagen,20)
+
+#generator.save(os.path.join(DATA_PATH, "face_generator.h5"))
