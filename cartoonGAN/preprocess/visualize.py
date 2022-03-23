@@ -22,6 +22,18 @@ def show_n_random(img_names=None,n=3,max_x=5,**kwargs):
     ax.set_axis_off()
   return fig,axs
 
+def plot_imgs(imgs,n=None,max_x=v.PREVIEW_COLS,**kwargs):
+  if n is None:
+    n = imgs.shape[0]
+  nrows = (n-1)//max_x+1
+  ncols = min(n,max_x)
+  fig,axs = plt.subplots(nrows,ncols,**kwargs)
+  axs = axs.flatten()
+  for ax,img in zip(axs,imgs):
+    ax.imshow(img)
+    ax.set_axis_off()
+  return fig,axs
+
 
 if __name__=="__main__":
   f,axs = show_n_random(n=10,max_x=5,figsize=(6,3)); 
