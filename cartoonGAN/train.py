@@ -4,6 +4,7 @@ from cartoonGAN.model import model
 from cartoonGAN.preprocess.visualize import plot_imgs
 import time
 import numpy as np 
+from matplotlib.pyplot import close
 from datetime import timedelta
 
 @tf.function
@@ -32,6 +33,7 @@ def save_images(epoch,fixed_seed):
   imgs = np.clip(imgs,0,1)
   fig, axs = plot_imgs(imgs)
   fig.savefig(f"training/epoch{epoch:03d}.png")
+  close(fig)
   return
 
 def train(datasetgenerator, epochs,nbatchesperepoch=10):
