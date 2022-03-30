@@ -5,3 +5,4 @@ __pycache__/
 */*/__pycache__/
 training/
 cartoonGAN.code-workspace
+.vscode/
